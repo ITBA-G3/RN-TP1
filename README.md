@@ -1,1 +1,4 @@
-# RN-TP1
+# Redes Newuronales - TP1 
+## Ezequiel Diaz Guzmán & José Iván Hertter
+
+
