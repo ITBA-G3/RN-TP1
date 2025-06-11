@@ -3,13 +3,28 @@
 
 ## 1. Dataset y Preprocesamiento
 - ¿Por qué es necesario redimensionar las imágenes a un tamaño fijo para una MLP?
+
+Como las redes _MLP_ tienen un numero fijo de entradas $x_i$ es necesario convertir las imágenes a un solo vector. Es decir que si la imágen es de 64x64 pixeles será necesario un vector de *(1x4096)* -> 4096 entradas a la red. Por esto es necesario redimensionar las imágenes para que cumplan con la cantidad de entradas con las que fue entrenada. 
+
 - ¿Qué ventajas ofrece Albumentations frente a otras librerías de transformación como `torchvision.transforms`?
+De la página oficial: 
+   1. Fast & performant: "Altamente optimizado", probado en benchmarks de "augmentation"
+      - Optimizada internamente con NumPy, reconocida biblioteca muy usada en procesamiento de imágenes, mientras que `torchvision.transforms` usa PIL (Python Imaging Library), que suele resultar más lenta.
+   2. Versatilidad: "Más de 100 transformaciones distintas para imágenes y máscaras.
+      - permite combinar múltiples transformaciones de forma controlada, lo que `torchvision.transforms` no hace fácilmente.
+      - Albumentations tiene funciones "únicas" como aplicado de "motion blur", "random fog"
+      - Permite aplicar probabilidades de ocurrencia de cada transformación, además de que pueden 
+   3. Probada y confiable. Muy usada en Kaggle.
+
 - ¿Qué hace `A.Normalize()`? ¿Por qué es importante antes de entrenar una red?
+
+`A.Normalize()` prmite normalizan los valores de los pixeles de la imagen para que tengan media nula ($\mu=0$) y varinza unitaria ($\sigma=1$). Realizar esto como un paso de pre procesamento permite permite acelerar el entrenamiento, así también como mejorar la estabilidad numérica evitando que haya valores que predominen por encima de otros. Cuando se entrena una red con valores normalizados, se espera que las imágenes que se van a utilizar en tiempo de predicción sean a su vez previamente normalizadas.
+
 - ¿Por qué convertimos las imágenes a `ToTensorV2()` al final de la pipeline?
 
 ## 2. Arquitectura del Modelo
 - ¿Por qué usamos una red MLP en lugar de una CNN aquí? ¿Qué limitaciones tiene?
-- ¿Qué hace la capa `Flatten()` al principio de la red?
+- ¿Qué hace la capa `Flatten()` al principio de la red?bash ~/Anaconda3-2024.10-1-Linux-x86_64.sh
 - ¿Qué función de activación se usó? ¿Por qué no usamos `Sigmoid` o `Tanh`?
 - ¿Qué parámetro del modelo deberíamos cambiar si aumentamos el tamaño de entrada de la imagen?
 
