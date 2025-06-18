@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/7307cc97827e46d0ac05f8dc1139c348/artifacts
+deleted_time: 1750207932992
+end_time: 1750207900290
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: 7307cc97827e46d0ac05f8dc1139c348
+run_name: mercurial-grouse-426
+run_uuid: 7307cc97827e46d0ac05f8dc1139c348
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750207893214
+status: 4
+tags: []
+user_id: ediazguzman

@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/f151a351d84c48ae9abb7668ba31fe04/artifacts
+deleted_time: 1750210434623
+end_time: 1750210056125
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: f151a351d84c48ae9abb7668ba31fe04
+run_name: wise-rat-869
+run_uuid: f151a351d84c48ae9abb7668ba31fe04
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750210004170
+status: 4
+tags: []
+user_id: ediazguzman

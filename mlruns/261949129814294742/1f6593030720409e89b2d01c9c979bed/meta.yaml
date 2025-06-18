@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/1f6593030720409e89b2d01c9c979bed/artifacts
+deleted_time: 1750193964497
+end_time: 1750193116597
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: 1f6593030720409e89b2d01c9c979bed
+run_name: nervous-pig-824
+run_uuid: 1f6593030720409e89b2d01c9c979bed
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750193042071
+status: 3
+tags: []
+user_id: ediazguzman

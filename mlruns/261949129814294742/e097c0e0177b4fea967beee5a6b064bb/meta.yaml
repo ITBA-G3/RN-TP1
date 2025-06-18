@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/e097c0e0177b4fea967beee5a6b064bb/artifacts
+deleted_time: 1750210434623
+end_time: 1750210414854
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: e097c0e0177b4fea967beee5a6b064bb
+run_name: resilient-croc-953
+run_uuid: e097c0e0177b4fea967beee5a6b064bb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750210334687
+status: 4
+tags: []
+user_id: ediazguzman

@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/24a8073267b6409884363fb3ca55daea/artifacts
+deleted_time: 1750195220669
+end_time: 1750195207788
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: 24a8073267b6409884363fb3ca55daea
+run_name: capable-penguin-759
+run_uuid: 24a8073267b6409884363fb3ca55daea
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750195111297
+status: 4
+tags: []
+user_id: ediazguzman

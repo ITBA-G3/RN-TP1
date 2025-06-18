@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/2295f2fa0e1848b2873094451b5719a3/artifacts
+deleted_time: 1750195108454
+end_time: 1750195100784
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: 2295f2fa0e1848b2873094451b5719a3
+run_name: caring-dove-100
+run_uuid: 2295f2fa0e1848b2873094451b5719a3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750194945540
+status: 4
+tags: []
+user_id: ediazguzman

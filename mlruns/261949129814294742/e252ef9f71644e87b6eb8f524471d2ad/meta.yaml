@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/e252ef9f71644e87b6eb8f524471d2ad/artifacts
+deleted_time: 1750193552306
+end_time: 1750192753589
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: e252ef9f71644e87b6eb8f524471d2ad
+run_name: merciful-sow-237
+run_uuid: e252ef9f71644e87b6eb8f524471d2ad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750192748599
+status: 4
+tags: []
+user_id: ediazguzman

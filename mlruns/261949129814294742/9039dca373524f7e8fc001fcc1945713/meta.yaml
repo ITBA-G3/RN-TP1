@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/9039dca373524f7e8fc001fcc1945713/artifacts
+deleted_time: 1750193552305
+end_time: 1750192762760
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: deleted
+run_id: 9039dca373524f7e8fc001fcc1945713
+run_name: invincible-sheep-303
+run_uuid: 9039dca373524f7e8fc001fcc1945713
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750192758040
+status: 4
+tags: []
+user_id: ediazguzman

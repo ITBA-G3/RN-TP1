@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ediazguzman/ITBA/Grado/2025-1Q/Redes_neuronales/TPs/RN-TP1/mlruns/261949129814294742/ec59d62ef6c243e78842e2d10c035916/artifacts
+end_time: 1750200376994
+entry_point_name: ''
+experiment_id: '261949129814294742'
+lifecycle_stage: active
+run_id: ec59d62ef6c243e78842e2d10c035916
+run_name: model_weightDec_1e-3+dropout_0.1
+run_uuid: ec59d62ef6c243e78842e2d10c035916
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750200025553
+status: 3
+tags: []
+user_id: ediazguzman
