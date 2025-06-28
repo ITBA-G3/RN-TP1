@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 import io
 import torch
+import torch.nn as nn
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
 import mlflow
 import torchvision.utils as vutils
@@ -97,3 +98,54 @@ def evaluate(model, loader, writer, device, train_dataset, criterion, epoch=None
 
     return avg_loss, acc
 
+class MLPClassifier(nn.Module):
+    def __init__(self, input_size, num_classes=10, dropout_rate=0.1):
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Conv2d(3,16,3, padding = 1, padding_mode = "reflect"),
+            nn.Dropout(p=dropout_rate),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
+
+            nn.Conv2d(16,32,3, padding = 1, padding_mode = "reflect"),
+            nn.Dropout(p=dropout_rate),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
+
+            nn.Flatten(),
+            nn.Linear((input_size//4)**2*32, 128),
+            nn.ReLU(),
+            nn.Linear(128, num_classes)
+        )
+
+    def forward(self, x):
+        return self.model(x)
+    
+    def init_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                # nn.init.xavier_uniform_(m.weight)
+                # nn.init.uniform_(m.weight)
+                nn.init.kaiming_normal_(m.weight)
+                nn.init.zeros_(m.bias)
+
+class CNNClassifier(nn.Module):
+    def __init__(self, input_size, dropout = 0.0, num_classes=10):
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Conv2d(3,16,3, padding = 1, padding_mode = "reflect"),
+            nn.Dropout(dropout),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
+            nn.Conv2d(16,32,3, padding = 1, padding_mode = "reflect"),
+            nn.Dropout(dropout),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
+            nn.Flatten(),
+            nn.Linear((input_size//4)**2*32, 128),
+            nn.ReLU(),
+            nn.Linear(128, num_classes)
+        )
+
+    def forward(self, x):
+        return self.model(x)
