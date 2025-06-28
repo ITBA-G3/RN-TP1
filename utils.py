@@ -31,7 +31,13 @@ def plot_to_tensorboard(fig, writer, tag, step):
     plt.close(fig)
     
 # Función para matriz de confusión y clasificación
-def log_classification_report(model, device, train_dataset.label_encoder.classes_ , loader, writer, step, prefix="val"):
+def log_classification_report(model, 
+                              device, 
+                              train_dataset, 
+                              loader, 
+                              writer, 
+                              step, 
+                              prefix="val"):
     model.eval()
     all_preds = []
     all_labels = []
@@ -140,6 +146,19 @@ class MLPClassifier(nn.Module):
 class CNNClassifier(nn.Module):
     def __init__(self, input_size, dropout = 0.0, num_classes=10, out_channels=16, kernel_size=3):
         super().__init__()
+        
+        # Calcular tamaño después de 2 convoluciones + 2 maxpools
+        def conv_out(size, kernel_size, padding = 1, stride = 1):
+            return (size + 2*padding - kernel_size) // stride + 1
+        
+        aux_size = input_size
+        aux_size = conv_out(aux_size, kernel_size)
+        aux_size = aux_size // 2  # MaxPool 1
+        aux_size = conv_out(aux_size, kernel_size)
+        aux_size = aux_size // 2  # MaxPool 2
+
+        linear_size = 32*(aux_size**2)
+        
         self.model = nn.Sequential(
             nn.Conv2d(3,out_channels,kernel_size, padding = 1, padding_mode = "reflect"),
             nn.Dropout(dropout),
@@ -150,8 +169,8 @@ class CNNClassifier(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(2,2),
             nn.Flatten(),
-            nn.Linear((input_size//4)**2*32, 128), #32 canales * (input_size//4)**2 --> input_size dividido a la mitad dos veces.
-            nn.ReLU(),
+            nn.Linear(linear_size, 128), #Linear size sale de calcular las pasadas sucesivas por las conv
+            nn.ReLU(),                   #Tuvimos que hacerlo para poder cambiar el tamaño del kernel libremente
             nn.Linear(128, num_classes)
         )
 
