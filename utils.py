@@ -8,9 +8,16 @@ import torch.nn as nn
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
 import mlflow
 import torchvision.utils as vutils
+from sklearn.preprocessing import LabelEncoder
 
 def get_class(x):
     return str(x.parent).split("/")[-1]
+
+def param_counter(model):
+    """
+    Cuenta el número de parámetros entrenables en un modelo PyTorch.
+    """
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 # Función para loguear una figura matplotlib en TensorBoard
 def plot_to_tensorboard(fig, writer, tag, step):
@@ -24,7 +31,7 @@ def plot_to_tensorboard(fig, writer, tag, step):
     plt.close(fig)
     
 # Función para matriz de confusión y clasificación
-def log_classification_report(model, device, train_dataset, loader, writer, step, prefix="val"):
+def log_classification_report(model, device, train_dataset.label_encoder.classes_ , loader, writer, step, prefix="val"):
     model.eval()
     all_preds = []
     all_labels = []
@@ -98,6 +105,7 @@ def evaluate(model, loader, writer, device, train_dataset, criterion, epoch=None
 
     return avg_loss, acc
 
+
 class MLPClassifier(nn.Module):
     def __init__(self, input_size, num_classes=10, dropout_rate=0.1):
         super().__init__()
@@ -130,22 +138,30 @@ class MLPClassifier(nn.Module):
                 nn.init.zeros_(m.bias)
 
 class CNNClassifier(nn.Module):
-    def __init__(self, input_size, dropout = 0.0, num_classes=10):
+    def __init__(self, input_size, dropout = 0.0, num_classes=10, out_channels=16, kernel_size=3):
         super().__init__()
         self.model = nn.Sequential(
-            nn.Conv2d(3,16,3, padding = 1, padding_mode = "reflect"),
+            nn.Conv2d(3,out_channels,kernel_size, padding = 1, padding_mode = "reflect"),
             nn.Dropout(dropout),
             nn.ReLU(),
             nn.MaxPool2d(2,2),
-            nn.Conv2d(16,32,3, padding = 1, padding_mode = "reflect"),
+            nn.Conv2d(out_channels,32,kernel_size, padding = 1, padding_mode = "reflect"),
             nn.Dropout(dropout),
             nn.ReLU(),
             nn.MaxPool2d(2,2),
             nn.Flatten(),
-            nn.Linear((input_size//4)**2*32, 128),
+            nn.Linear((input_size//4)**2*32, 128), #32 canales * (input_size//4)**2 --> input_size dividido a la mitad dos veces.
             nn.ReLU(),
             nn.Linear(128, num_classes)
         )
 
     def forward(self, x):
         return self.model(x)
+    
+    def init_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                nn.init.xavier_uniform_(m.weight)
+                # nn.init.uniform_(m.weight)
+                # nn.init.kaiming_normal_(m.weight)
+                nn.init.zeros_(m.bias)
