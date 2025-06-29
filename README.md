@@ -9,5 +9,5 @@
 
 # Informe
 
-El informe contiene el proceso seguido en los experimentos hechos, contiene resultados y justifiaciones
+El informe contiene el proceso seguido en los experimentos hechos, contiene resultados y justificaciones
 de las elecciones tomadas, con posibles respuestas a las preguntas que aparecieron durante el desarrollo del trabajo.
