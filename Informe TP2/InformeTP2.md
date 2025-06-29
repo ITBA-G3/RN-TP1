@@ -1,3 +1,9 @@
+Hertter, José Iván - 62499
+
+Diaz Guzmán, Ezequiel - 61602
+
+Comisión K - Ingeniería Electrónica
+
 # Modificación de la Red MLP a CNN
 
 Lo primero a hacer en este caso fue modificar la definición del modelo. En particular, con la creación de la clase _CNNClassifier_ en utils.py.
