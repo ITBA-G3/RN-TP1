@@ -144,15 +144,18 @@ class MLPClassifier(nn.Module):
                 nn.init.zeros_(m.bias)
 
 class CNNClassifier(nn.Module):
-    def __init__(self, input_size, dropout = 0.0, num_classes=10, out_channels=16, kernel_size=3):
+    def __init__(self, input_size, dropout = 0.0, num_classes=10, out_channels=16, kernel_size=3, dilation =1, stride=1, padding=1):
         super().__init__()
         
         # Calcular tamaño después de 2 convoluciones + 2 maxpools
-        def conv_out(size, kernel_size, padding = 1, stride = 1):
-            return (size + 2*padding - kernel_size) // stride + 1
+        # def conv_out(size, kernel_size, padding = 1, stride = 1):
+        #     return (size + 2*padding - kernel_size) // stride + 1
         
+        def conv_out(size, kernel_size, padding=1, stride=1, dilation=1): #lo mismo que arriba, pero usando dilation
+            return (size + 2*padding - dilation*(kernel_size - 1) - 1) // stride + 1
+
         aux_size = input_size
-        aux_size = conv_out(aux_size, kernel_size)
+        aux_size = conv_out(aux_size, kernel_size, padding, stride=stride, dilation=dilation)
         aux_size = aux_size // 2  # MaxPool 1
         aux_size = conv_out(aux_size, kernel_size)
         aux_size = aux_size // 2  # MaxPool 2
@@ -160,7 +163,7 @@ class CNNClassifier(nn.Module):
         linear_size = 32*(aux_size**2)
         
         self.model = nn.Sequential(
-            nn.Conv2d(3,out_channels,kernel_size, padding = 1, padding_mode = "reflect"),
+            nn.Conv2d(3,out_channels,kernel_size, padding = padding, dilation=dilation, padding_mode = "reflect", stride=stride),
             nn.Dropout(dropout),
             nn.ReLU(),
             nn.MaxPool2d(2,2),
