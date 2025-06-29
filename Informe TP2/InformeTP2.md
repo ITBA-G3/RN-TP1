@@ -4,10 +4,8 @@ Lo primero a hacer en este caso fue modificar la definición del modelo. En part
 
 La secuencia de capas se definió como se presentó en clase. Capas convolucionales seguidas de funciones de activación y capas de MaxPool2D, que reducen la dimensión _espacial_ de la salida de las convoluciones. Por último, le siguen dos capas lineales _fully connected_, de las cuales la primera posee _linear_size_ entradas, que representa el tamaño de salida de la segunda MaxPool2D, teniendo en cuenta que no sólo éstas modifican la dimensión de salida, sino también las convolucionales.
 
-En particular, la ecuación de salida de una capa convolucional, según la web oficial de PyTorch, resulta 
+En particular, la ecuación de salida de una capa convolucional, según la web oficial de PyTorch, resulta $$W_{out} = \frac{W_{in} + 2 \cdot padding_w - dilation_w \cdot (kernel\_size_w - 1) - 1}{stride_w} + 1 $$
 
-$$W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilation}[1]
-          \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor$$
 
 Para calcular estas salidas se hizo la función auxiliar _conv_out()_, que calcula la salida resultante al pasar una entrada de tamaño definido, por una capa convolucional con todos los parámetros de la ecuación.
 
